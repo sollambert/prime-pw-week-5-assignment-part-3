@@ -37,10 +37,11 @@ function search ( searchAlbum = {artist, year, track} ) {
     for (album of collection) {
         if (artist == album.artist || year == album.year) {
             result.push(album);
-        }
-        for (albumTrack of album.tracks) {
-            if (albumTrack.name == track) {
-                result.push(album);
+        } else {
+            for (albumTrack of album.tracks) {
+                 if (albumTrack.name == track) {
+                     result.push(album);
+                }
             }
         }
     }
