@@ -23,16 +23,26 @@ function findByArtist ( artist ) {
 }
 
 //The assignment is ambiguous on if it wants *ANY* or *ALL* search criteria matched
-function search ( searchAlbum = {artist, year} ) {
+function search ( searchAlbum = {artist, year, track} ) {
     let result = [];
     let artist = searchAlbum.artist;
     let year = searchAlbum.year;
-    if (searchAlbum == undefined || (searchAlbum.artist == undefined && searchAlbum.year == undefined)) {
+    let track = searchAlbum.track;
+    if (searchAlbum == undefined
+        || (searchAlbum.artist == undefined
+            && searchAlbum.year == undefined
+            && track == undefined)) {
         return collection;
     }
     for (album of collection) {
         if (artist == album.artist || year == album.year) {
             result.push(album);
+        }
+        for (albumTrack of album.tracks) {
+            //console.log(albumTrack.name);
+            if (albumTrack.name == track) {
+                result.push(album);
+            }
         }
     }
     return result;
@@ -93,7 +103,7 @@ addToCollection('Mystery Girl', 'Roy Orbison', 1989,
 {name: 'Windsurfer', dur: '4:01'},
 {name: 'Careless Heart', dur: '4:08'}]);
 
-addToCollection('32Oz to Failure', 'The Antidont\'s', 2014, 
+addToCollection('32 Oz to Failure', 'The Antidont\'s', 2014, 
 [{name: 'Shit the Bed', dur: '1:14'},
 {name: 'I Will Not Be A Blind Pass Casualty', dur: '1:54'},
 {name: 'Bosch', dur: '1:23'},
@@ -126,4 +136,6 @@ console.log(search({artist: 'King Crimson', year: 1969}));
 console.log(search({artist: 'King Crimson', year: 2015}));
 console.log(search({artist: 'King Crimson'}));
 console.log(search({year: 2015}));
+console.log(search({track: 'Electricity'}));
+console.log(search({artist: 'David Bowie'}));
 console.log(search({}));
