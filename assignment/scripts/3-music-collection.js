@@ -15,6 +15,18 @@ function showCollection() {
     for (album of collection) {
         console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
     }
+    console.log('End of collection.')
+}
+
+function findByArtist ( artist ) {
+  for (albumIn in collection) {
+    let album = collection[albumIn];
+    if (album.artist == artist) {
+        console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
+    } else if (albumIn == collection.length - 1) {
+        console.log (`${artist} not found in collection.`)
+    }
+  }
 }
 
 addToCollection('In the Court of the Crimson King', 'King Crimson', '1969');
@@ -25,3 +37,6 @@ addToCollection('32Oz to Failure', 'The Antidont\'s', '2014');
 addToCollection('Desire', 'Spazzkid', '2013');
 
 showCollection();
+
+findByArtist('Spazzkid');
+findByArtist('David Bowie')
