@@ -23,3 +23,5 @@ addToCollection('Vagabond Dreams', 'St. Cinder', '2015');
 addToCollection('Mystery Girl', 'Roy Orbison', '1989');
 addToCollection('32Oz to Failure', 'The Antidont\'s', '2014');
 addToCollection('Desire', 'Spazzkid', '2013');
+
+showCollection();
