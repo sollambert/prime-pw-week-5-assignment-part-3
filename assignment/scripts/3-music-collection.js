@@ -5,7 +5,7 @@ function addToCollection ( title, artist, yearPub ) {
     const album = {
         title: title,
         artist: artist,
-        yearPublished: yearPub
+        year: yearPub
     }
     collection.push (album);
 }
@@ -13,20 +13,35 @@ function addToCollection ( title, artist, yearPub ) {
 function showCollection() {
     console.log(`Total albums in collection: ${collection.length}`);
     for (album of collection) {
-        console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
+        console.log(`${album.title} by ${album.artist}, published in ${album.year}`);
     }
-    console.log('End of collection.')
+    console.log('End of collection.');
 }
 
 function findByArtist ( artist ) {
   for (albumIn in collection) {
     let album = collection[albumIn];
     if (album.artist == artist) {
-        console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
+        console.log(`${album.title} by ${album.artist}, published in ${album.year}`);
     } else if (albumIn == collection.length - 1) {
-        console.log (`${artist} not found in collection.`)
+        console.log (`${artist} not found in collection.`);
     }
   }
+}
+
+function search ( searchAlbum = {artist, year} ) {
+    let result = [];
+    let artist = searchAlbum.artist;
+    let year = searchAlbum.year;
+    if (searchAlbum == undefined || searchAlbum.artist == undefine || searchAlbum.year == undefined) {
+        return collection;
+    }
+    for (album of collection) {
+        if (artist == album.artist && year == album.year) {
+            result.push(album);
+        }
+    }
+    return result;
 }
 
 addToCollection('In the Court of the Crimson King', 'King Crimson', '1969');
@@ -39,4 +54,4 @@ addToCollection('Desire', 'Spazzkid', '2013');
 showCollection();
 
 findByArtist('Spazzkid');
-findByArtist('David Bowie')
+findByArtist('David Bowie');
