@@ -12,11 +12,11 @@ function addToCollection ( title, artist, yearPub, tracks ) {
 }
 
 function findByArtist ( artist ) {
-  for (albumIn in collection) {
-    let album = collection[albumIn];
+  for (albumInd in collection) {
+    let album = collection[albumInd];
     if (album.artist == artist) {
         console.log(`${album.title} by ${album.artist}, published in ${album.year}`);
-    } else if (albumIn == collection.length - 1) {
+    } else if (albumInd == collection.length - 1) {
         console.log (`${artist} not found in collection.`);
     }
   }
@@ -39,7 +39,6 @@ function search ( searchAlbum = {artist, year, track} ) {
             result.push(album);
         }
         for (albumTrack of album.tracks) {
-            //console.log(albumTrack.name);
             if (albumTrack.name == track) {
                 result.push(album);
             }
