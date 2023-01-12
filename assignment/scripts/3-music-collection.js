@@ -1,6 +1,13 @@
 console.log('***** Music Collection *****')
 let collection = [];
 
+/**
+ * 
+ * @param {string} title Title of album object being created and added to collection array.
+ * @param {string} artist Name of artist for object being added to collection array. 
+ * @param {string} yearPub Publishing year of album object being added to collection array.
+ * @param {object[]} tracks Array of track objects being added to album object with name and dur variables for title name and song duration respectively.
+ */
 function addToCollection ( title, artist, yearPub, tracks ) {
     const album = {
         title: title,
@@ -11,6 +18,10 @@ function addToCollection ( title, artist, yearPub, tracks ) {
     collection.push (album);
 }
 
+/**
+ * Finds matching artist names by comparing to string parameter. Logs results.
+ * @param {string} artist A string that contains the name of the artist that is being compared to the artist field in all album objects within the collections array.
+ */
 function findByArtist ( artist ) {
   for (albumInd in collection) {
     let album = collection[albumInd];
@@ -23,6 +34,11 @@ function findByArtist ( artist ) {
 }
 
 //The assignment is ambiguous on if it wants *ANY* or *ALL* search criteria matched
+/**
+ * Compares the artist, year, and track variables of an object to those of all objects within the collection array.
+ * @param {*} searchAlbum 
+ * @returns An array of matching albums within album collection. If no albums match any search criteria, returns an empty array. If passed an undefined parameter OR an object with undefined variables, returns the entire collection array.
+ */
 function search ( searchAlbum = {artist, year, track} ) {
     let result = [];
     let artist = searchAlbum.artist;
@@ -48,6 +64,9 @@ function search ( searchAlbum = {artist, year, track} ) {
     return result;
 }
 
+/**
+ * Logs the contents of the collection array.
+ */
 function showCollection() {
     console.log(`Total albums in collection: ${collection.length}`);
     for (album of collection) {
