@@ -2,7 +2,7 @@ console.log('***** Music Collection *****')
 let collection = [];
 
 /**
- * 
+ * A method for adding an album to the collection array with given parameters.s
  * @param {string} title Title of album object being created and added to collection array.
  * @param {string} artist Name of artist for object being added to collection array. 
  * @param {string} yearPub Publishing year of album object being added to collection array.
