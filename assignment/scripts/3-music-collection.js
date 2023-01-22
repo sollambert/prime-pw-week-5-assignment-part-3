@@ -2,7 +2,7 @@ console.log('***** Music Collection *****')
 let collection = [];
 
 /**
- * 
+ * Creates an object using given parameters, logs it, and adds to the global collection array.
  * @param {string} title Title of album object being created and added to collection array.
  * @param {string} artist Name of artist for object being added to collection array. 
  * @param {string} yearPub Publishing year of album object being added to collection array.
@@ -15,22 +15,28 @@ function addToCollection ( title, artist, yearPub, tracks ) {
         year: yearPub,
         tracks: tracks
     }
+    console.log(`Album added to array: ${album}`);
     collection.push (album);
+    return album;
 }
 
 /**
  * Finds matching artist names by comparing to string parameter. Logs results.
  * @param {string} artist A string that contains the name of the artist that is being compared to the artist field in all album objects within the collections array.
+ * @returns An array of all albums found that match given artist name.
  */
 function findByArtist ( artist ) {
-  for (albumInd in collection) {
+    let albumsFound = [];
+    for (albumInd in collection) {
     let album = collection[albumInd];
     if (album.artist == artist) {
         console.log(`${album.title} by ${album.artist}, published in ${album.year}`);
+        albumsFound.push(album);
     } else if (albumInd == collection.length - 1) {
         console.log (`${artist} not found in collection.`);
     }
   }
+  return albumsFound;
 }
 
 //The assignment is ambiguous on if it wants *ANY* or *ALL* search criteria matched
@@ -65,11 +71,11 @@ function search ( searchAlbum = {artist, year, track} ) {
 }
 
 /**
- * Logs the contents of the collection array.
+ * Logs the contents of the provided array.
  */
-function showCollection() {
-    console.log(`Total albums in collection: ${collection.length}`);
-    for (album of collection) {
+function showCollection(albums) {
+    console.log(`Total albums in collection: ${albums.length}`);
+    for (album of albums) {
         console.log(`${album.title} by ${album.artist}, published in ${album.year}`);
         for (let i = 1; i <= album.tracks.length; i++) {
             track = album.tracks[i-1];
@@ -146,7 +152,7 @@ addToCollection('Desire', 'Spazzkid', 2013,
 {name: 'Marquez', dur: '5:23'},
 {name: 'If Not You, Then Who?', dur: '6:29'}]);
 
-showCollection();
+showCollection(collection);
 
 findByArtist('Spazzkid');
 findByArtist('David Bowie');
