@@ -2,7 +2,11 @@ console.log('***** Music Collection *****')
 let collection = [];
 
 /**
+<<<<<<< HEAD
  * Creates an object using given parameters, logs it, and adds to the global collection array.
+=======
+ * A method for adding an album to the collection array with given parameters.s
+>>>>>>> 68421ae4a8cb9be94554df9ff311b5b42f176796
  * @param {string} title Title of album object being created and added to collection array.
  * @param {string} artist Name of artist for object being added to collection array. 
  * @param {string} yearPub Publishing year of album object being added to collection array.
